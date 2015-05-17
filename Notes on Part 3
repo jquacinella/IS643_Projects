@@ -1,0 +1,87 @@
+Notes on Part 3
+===============
+
+* Basics of Option Pricing
+    Long futures contract on gold: 
+        if gold goes up by $1, 1 contract leverage would get you $100.
+        Always multiply by leverage
+        Winning or losing depends on how future price is moving
+        Linear relationship
+    Options
+        * Are not linear; price of contrat is not only variable
+        * options are theoretically prices based on a probability model
+        * factors:
+            * cost of carry
+            * risk free interest rate
+            * the stirke price
+            * volatility of price change of the underlying futures price
+            * the futures price
+            * time to expiration
+        * dont focus on cost of carrt or risk free I.R. since they do not flucate on a day to day basis
+        * theoretical price gives us estimate but we trade the option premium
+        * option premium = intristinc value + extrinsic value
+        * intrinsic value = what the position or option would be worth at expiration (i.e. if it were today)
+        * extrinsic value = prob factor (i.e. theoretical value) + supply&demand_element
+        * Examples:
+            * the deeper in the money the option is, the greater the intrinsic value
+                * if strike price is 75, when future is @ 80, price is mostly intrinsic
+                * if strike price is 90, when future is @ 80, price is all extrinsic
+            * we lose extrinsic value as time moves forward
+            * higher the implied volitility (iv) the more expensive the option is (has higher price, all things being equal)
+            * as time moves forward, the role of volitility diminishes as we get closer to the expiration; we get closer to the intrinsic value
+
+* Value a Bond and Calculate Yield to Maturity
+    * How do we value his bond
+    * We can do simple or compound interest
+    * Simple interest: coupon yield, current yield
+    * Compound interest: yield to maturity
+    * Simple interest: sum of value of all coupons
+        * A coupon payment on a bond is a periodic interest payment that the bondholder receives during the time between when the bond is issued and when it matures.
+        * If you buy the bond, hold till maturity, then value of the investment is simply the sum of all the coupon payments
+        * Coupon yield = 1 years coupon payment / par value
+            * Set when a bond is issued
+        * Current yield = 1 years coupon payment / current price buying at
+            * Problem w/ current yield: doesnt account for the amount of money you lose or gain
+            when the bond matures
+            * Example: if you pay $1200 for a bond that matures at $1000, you lose $200 btu this is not reflected in the current yield
+    * Compound interest
+        * You re-invest coupon payments into another investment, which has same interest rate as bond,
+        * Some guesswork, since the reinvestment is variable
+        * Coupon 2 = coupoun 1 + interest earned from coupon 1
+    * Example:
+        * After 30 yrs, a bond has a simple interest calculation of $1500
+        * If, however, you reinvest at 5%, the bond is $3400 after 30yrs
+    * Yield to Maturity
+        * Accounts for par gain or loss, which i the difference in what you pay for the bond and what it matures at
+        * Sum the compound interest and the par gain/loss, which gives a difference value. 
+        * This is used to calculate Yield To Maturity
+        * Crazy equation to do the calculation (there is a calc at zenwealth.com)
+    * Example:
+        * If only looking at coupon yield, can be misleading due to it not changing based on price you pay
+        * Current yield is better but does not take into account maturity value nor compound interest
+        * Yield to maturity gives you best look at how to price the bond
+
+* Why a futures price differs from a forward price
+    * forward contract - over the counter agreement, private transaction
+        * primary risk is mainly based on counter party defaulting
+    * futures contract - trades on an exchange based on rules in the contract
+        * exhcnage is coutner party and therefore little risk of default by exchange
+        * risk is basis risk (??)
+    * why are prices different?
+        * daily settlements on futures but not on forward
+        * assuming positive ocrrelation with stirke price S and interest rate r
+            * If price goes up, daily settlement creates excess margin which can be taken out by owner of futures, which can be reinvested at higher interest rate
+            * If price goes down, daily settlement creates margin call which can be taken out by owner of futures, which can be reinvested at higher interest rate
+    * summary
+        IF strike price and interest rate are positively correlated, future > forward price
+        IF strike price and interest rate are negative correlated, future < forward price
+
+* What is VWAP?
+    * Volume weighted average price
+    * closing price of the day is average of the last 30min of transaction
+    * but not simple average, need to account of volume of transaction
+        * sum of volume*price of transactions / sum of volume of transactions
+    * VWAP of the whole day for lesser volume stocks
+    * Used for derivative pricing at end of day
+    * Used for stock manipulation
+        * End of month or year, they will put in large order to inflate price
